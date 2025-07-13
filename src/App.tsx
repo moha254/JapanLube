@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Car, Wrench, Fuel, ShoppingCart, Phone, Mail, MapPin, Clock, Star, ChevronDown, Menu, X } from 'lucide-react';
+import { Car, Wrench, Fuel, ShoppingCart, Phone, Mail, MapPin, Clock, Star, ChevronDown, Menu, X, CheckCircle } from 'lucide-react';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -38,6 +38,81 @@ function App() {
       title: "Fuel Station",
       description: "Premium fuel and automotive convenience store",
       features: ["Premium Gasoline", "Diesel Fuel", "Car Accessories", "Snacks & Drinks"]
+    }
+  ];
+
+  const products = [
+    {
+      name: "Premium Engine Oil",
+      category: "Engine Lubricants",
+      description: "High-performance synthetic engine oil for optimal engine protection",
+      variants: ["5W-30", "10W-40", "15W-50"],
+      features: ["Extended oil life", "Superior engine protection", "Improved fuel economy"],
+      price: "From KES 2,500",
+      image: "🛢️"
+    },
+    {
+      name: "Transmission Fluid",
+      category: "Transmission",
+      description: "Automatic and manual transmission fluids for smooth gear operation",
+      variants: ["ATF", "MTF", "CVT Fluid"],
+      features: ["Smooth shifting", "Heat resistance", "Extended transmission life"],
+      price: "From KES 1,800",
+      image: "⚙️"
+    },
+    {
+      name: "Brake Fluid",
+      category: "Brake System",
+      description: "High-quality brake fluid for reliable braking performance",
+      variants: ["DOT 3", "DOT 4", "DOT 5.1"],
+      features: ["High boiling point", "Moisture resistance", "Reliable braking"],
+      price: "From KES 800",
+      image: "🛑"
+    },
+    {
+      name: "Power Steering Fluid",
+      category: "Steering System",
+      description: "Premium power steering fluid for smooth steering operation",
+      variants: ["ATF-based", "Synthetic", "Universal"],
+      features: ["Smooth steering", "Reduced wear", "Temperature stability"],
+      price: "From KES 1,200",
+      image: "🎯"
+    },
+    {
+      name: "Coolant/Antifreeze",
+      category: "Cooling System",
+      description: "Long-life coolant for optimal engine temperature control",
+      variants: ["Green", "Red", "Blue", "Orange"],
+      features: ["Corrosion protection", "Freeze protection", "Heat transfer"],
+      price: "From KES 1,500",
+      image: "❄️"
+    },
+    {
+      name: "Gear Oil",
+      category: "Differential & Gearbox",
+      description: "Heavy-duty gear oil for differentials and manual transmissions",
+      variants: ["75W-90", "80W-90", "85W-140"],
+      features: ["Extreme pressure protection", "Thermal stability", "Wear protection"],
+      price: "From KES 2,200",
+      image: "🔧"
+    },
+    {
+      name: "Grease",
+      category: "Lubrication",
+      description: "Multi-purpose grease for chassis and bearing lubrication",
+      variants: ["Lithium-based", "Synthetic", "High-temperature"],
+      features: ["Water resistance", "Long-lasting", "Versatile application"],
+      price: "From KES 600",
+      image: "🧈"
+    },
+    {
+      name: "Fuel Additives",
+      category: "Performance",
+      description: "Fuel system cleaners and performance enhancers",
+      variants: ["Injector cleaner", "Octane booster", "Fuel stabilizer"],
+      features: ["Improved performance", "Better fuel economy", "Engine cleaning"],
+      price: "From KES 400",
+      image: "⚡"
     }
   ];
 
@@ -146,6 +221,7 @@ Please confirm my appointment. Thank you!`;
               <button onClick={() => scrollToSection('home')} className="text-gray-700 hover:text-red-600 font-medium transition-colors">Home</button>
               <button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-red-600 font-medium transition-colors">About</button>
               <button onClick={() => scrollToSection('services')} className="text-gray-700 hover:text-red-600 font-medium transition-colors">Services</button>
+              <button onClick={() => scrollToSection('products')} className="text-gray-700 hover:text-red-600 font-medium transition-colors">Products</button>
               <button onClick={() => scrollToSection('booking')} className="text-gray-700 hover:text-red-600 font-medium transition-colors">Book Now</button>
               <button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-red-600 font-medium transition-colors">Contact</button>
             </nav>
@@ -173,6 +249,7 @@ Please confirm my appointment. Thank you!`;
                 <button onClick={() => scrollToSection('home')} className="text-left text-gray-700 hover:text-red-600 font-medium">Home</button>
                 <button onClick={() => scrollToSection('about')} className="text-left text-gray-700 hover:text-red-600 font-medium">About</button>
                 <button onClick={() => scrollToSection('services')} className="text-left text-gray-700 hover:text-red-600 font-medium">Services</button>
+                <button onClick={() => scrollToSection('products')} className="text-left text-gray-700 hover:text-red-600 font-medium">Products</button>
                 <button onClick={() => scrollToSection('booking')} className="text-left text-gray-700 hover:text-red-600 font-medium">Book Now</button>
                 <button onClick={() => scrollToSection('contact')} className="text-left text-gray-700 hover:text-red-600 font-medium">Contact</button>
                 <button 
@@ -340,8 +417,117 @@ Please confirm my appointment. Thank you!`;
         </div>
       </section>
 
+      {/* Products Section */}
+      <section id="products" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-black mb-4">Our Products</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover a wide range of premium automotive lubricants and products for your vehicle.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {products.map((product, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 shadow-md">
+                <div className="text-red-600 mb-4 text-center">
+                  {product.image}
+                </div>
+                <h3 className="text-xl font-bold text-black mb-2">{product.name}</h3>
+                <p className="text-gray-600 mb-4">{product.description}</p>
+                <p className="font-bold text-black text-lg">{product.price}</p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {product.variants.map((variant, vIdx) => (
+                    <span key={vIdx} className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">
+                      {variant}
+                    </span>
+                  ))}
+                </div>
+                <ul className="mt-4 space-y-2 text-sm text-gray-700">
+                  {product.features.map((feature, fIdx) => (
+                    <li key={fIdx} className="flex items-center">
+                      <CheckCircle className="w-4 h-4 text-red-600 mr-2" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section */}
+      <section id="products" className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-black mb-4">Our Premium Products</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Discover our comprehensive range of high-quality Japanese lubricants and automotive products
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {products.map((product, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow group">
+                <div className="text-center mb-4">
+                  <div className="text-4xl mb-3">{product.image}</div>
+                  <h3 className="text-lg font-bold text-black mb-2">{product.name}</h3>
+                  <span className="inline-block bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full mb-3">
+                    {product.category}
+                  </span>
+                </div>
+                
+                <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+                
+                <div className="mb-4">
+                  <h4 className="font-bold text-black text-sm mb-2">Available Variants:</h4>
+                  <div className="flex flex-wrap gap-1">
+                    {product.variants.map((variant, idx) => (
+                      <span key={idx} className="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded">
+                        {variant}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <h4 className="font-bold text-black text-sm mb-2">Key Features:</h4>
+                  <ul className="space-y-1">
+                    {product.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center space-x-2 text-xs text-gray-700">
+                        <div className="w-1 h-1 bg-red-600 rounded-full"></div>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="border-t border-gray-200 pt-4">
+                  <button 
+                    onClick={() => scrollToSection('booking')}
+                    className="w-full bg-red-600 text-white py-2 rounded-lg font-bold text-sm hover:bg-red-700 transition-colors"
+                  >
+                    Get Quote
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <button 
+              onClick={() => scrollToSection('booking')}
+              className="bg-red-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-colors"
+            >
+              Get Quote for Products
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Testimonials Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-black mb-4">What Our Customers Say</h2>
@@ -692,6 +878,7 @@ Please confirm my appointment. Thank you!`;
                 <li><button onClick={() => scrollToSection('home')} className="hover:text-white transition-colors">Home</button></li>
                 <li><button onClick={() => scrollToSection('about')} className="hover:text-white transition-colors">About Us</button></li>
                 <li><button onClick={() => scrollToSection('services')} className="hover:text-white transition-colors">Services</button></li>
+                <li><button onClick={() => scrollToSection('products')} className="hover:text-white transition-colors">Products</button></li>
                 <li><button onClick={() => scrollToSection('booking')} className="hover:text-white transition-colors">Book Appointment</button></li>
                 <li><button onClick={() => scrollToSection('contact')} className="hover:text-white transition-colors">Contact</button></li>
               </ul>
